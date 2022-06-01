@@ -5,8 +5,8 @@ public class DescontoPorCincoItens : IDesconto
 
     public double Desconta(Orcamento orcamento)
     {
-        if (orcamento.Valor > 500)
-            return orcamento.Valor * 0.07;
+        if (orcamento.Itens.Count > 5)
+            return orcamento.Valor * 0.1;
 
         return Proximo.Desconta(orcamento);
     }
