@@ -5,6 +5,7 @@ using _CR = DesignPatternsAlura.ChainResponsability;
 using DesignPatternsAlura.Strategy;
 using _D = DesignPatternsAlura.Decorator;
 using _Filtro = DesignPatternsAlura.Decorator.FiltroContas;
+using DesignPatternsAlura.Builder;
 
 class Program
 {
@@ -16,6 +17,7 @@ class Program
         Console.WriteLine("3 - Template Method");
         Console.WriteLine("4 - Decorator - Imposto");
         Console.WriteLine("5 - Decorator - Filtros");
+        Console.WriteLine("6 - Buider");
 
         var opcao = Console.ReadKey();
 
@@ -71,6 +73,20 @@ class Program
                 Console.WriteLine("\n Quantidade de contas resultantes: " + contasFiltradas.Count);
                 foreach (var conta in contasFiltradas)
                     Console.WriteLine(conta.Saldo);
+
+                break;
+            case '6':
+
+                var criador = new NotaFiscalBuilder();
+                criador.ParaEmpresa("Lambda3")
+                    .ComCnpj("12.378.423/0001-90")
+                    .Com(new ItemDaNota("item 1", 100))
+                    .Com(new ItemDaNota("item 2", 200))
+                    .ComObservacoes("exemplo de observação");
+
+                NotaFiscal nf = criador.Constroi();
+                Console.WriteLine(nf.ValorBruto);
+                Console.WriteLine(nf.Impostos);
 
                 break;
         }
