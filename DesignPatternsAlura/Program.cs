@@ -6,6 +6,7 @@ using DesignPatternsAlura.Strategy;
 using _D = DesignPatternsAlura.Decorator;
 using _Filtro = DesignPatternsAlura.Decorator.FiltroContas;
 using DesignPatternsAlura.Builder;
+using _O = DesignPatternsAlura.Observer;
 
 class Program
 {
@@ -18,6 +19,7 @@ class Program
         Console.WriteLine("4 - Decorator - Imposto");
         Console.WriteLine("5 - Decorator - Filtros");
         Console.WriteLine("6 - Buider");
+        Console.WriteLine("7 - Observer");
 
         var opcao = Console.ReadKey();
 
@@ -87,6 +89,25 @@ class Program
                 NotaFiscal nf = criador.Constroi();
                 Console.WriteLine(nf.ValorBruto);
                 Console.WriteLine(nf.Impostos);
+
+                break;
+            case '7':
+                var listaAcoes = new List<_O.IAcaoAposGerarNota>();
+                listaAcoes.Add(new _O.EnviadorDeEmail());
+                listaAcoes.Add(new _O.NotaFiscalDao());
+                listaAcoes.Add(new _O.EnviadorDeSms());
+                listaAcoes.Add(new _O.Impressora());
+                var builder = new _O.NotaFiscalBuilder(listaAcoes);
+
+                var notaFiscal = builder.ParaEmpresa("Lambda3")
+                    .ComCnpj("12.378.423/0001-90")
+                    .Com(new _O.ItemDaNota("item 1", 100))
+                    .Com(new _O.ItemDaNota("item 2", 200))
+                    .ComObservacoes("exemplo de observação")
+                    .Constroi();
+
+                Console.WriteLine(notaFiscal.ValorBruto);
+                Console.WriteLine(notaFiscal.Impostos);
 
                 break;
         }
