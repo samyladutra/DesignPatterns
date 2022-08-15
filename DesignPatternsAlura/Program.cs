@@ -7,6 +7,7 @@ using _D = DesignPatternsAlura.Decorator;
 using _Filtro = DesignPatternsAlura.Decorator.FiltroContas;
 using DesignPatternsAlura.Builder;
 using _O = DesignPatternsAlura.Observer;
+using DesignPatternsAlura.Adapter;
 
 class Program
 {
@@ -109,6 +110,16 @@ class Program
                 Console.WriteLine(notaFiscal.ValorBruto);
                 Console.WriteLine(notaFiscal.Impostos);
 
+                break;
+
+            case '8':
+                var cliente = new Cliente();
+                cliente.Nome = "Samyla";
+                cliente.Endereco = "Rua Campos Sales";
+                cliente.DataNascimento = DateTime.Now;
+
+                var xml = new GeradorDeXml().GeraXml(cliente);
+                Console.WriteLine(xml);
                 break;
         }
 
