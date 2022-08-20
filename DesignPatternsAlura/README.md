@@ -13,7 +13,7 @@ Objetivo: Isolar chamadas a bibliotecas ou código de sistema legado dentro de u
 Implementação semelhante ao padrão Command e Strategy.
 
 ### Facade 
-Utilizado para esconder complexidade de um sistema legado
+Utilizado para esconder complexidade de um sistema legado. É uma "fachada" para utilizar os serviços do sistema legado.
 
 ## Padrões comportamentais
 Padrões comportamentais são voltados aos algoritmos e a designação de responsabilidades entre objetos.
