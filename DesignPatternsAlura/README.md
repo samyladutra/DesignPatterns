@@ -12,6 +12,9 @@ Os padrões estruturais explicam como montar objetos e classes em estruturas mai
 Objetivo: Isolar chamadas a bibliotecas ou código de sistema legado dentro de uma classe que se adapta ao sistema.
 Implementação semelhante ao padrão Command e Strategy.
 
+### Facade 
+Utilizado para esconder complexidade de um sistema legado
+
 ## Padrões comportamentais
 Padrões comportamentais são voltados aos algoritmos e a designação de responsabilidades entre objetos.
 ### Command

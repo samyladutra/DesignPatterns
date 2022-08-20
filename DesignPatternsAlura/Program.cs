@@ -121,9 +121,17 @@ class Program
                 var xml = new GeradorDeXml().GeraXml(cliente);
                 Console.WriteLine(xml);
                 break;
+
+            case '9':
+                var cpf = "123456789";
+                var facade = new DesignPatternsAlura.Facade.EmpresaFacadeSingleton().Instancia;
+                var clienteFacade = facade.BuscaCliente(cpf);
+
+                var fatura = facade.CriaFatura(clienteFacade, 5000);
+                facade.GeraCobranca(DesignPatternsAlura.Facade.Tipo.Boleto, fatura);
+                break;
         }
 
         Console.ReadKey();
-
     }
 }
